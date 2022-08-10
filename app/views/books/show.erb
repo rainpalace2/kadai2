@@ -1,5 +1,4 @@
 
-
 <p>
 <strong>Title</strong>
 <p><%= @book.title %></p>
@@ -9,6 +8,11 @@
 <strong>Body</strong>
 <p><%= @book.body %></p>
 </p>
+
+<% if flash[:notice] %>
+<p id="notice">
+</p>
+<% end %>
 
 <%= link_to"Edit",edit_book_path(@book.id) %>
 |
