@@ -1,114 +1,36 @@
-<body>
+
+ <body>
   <p id="notice"></p>
   <h1>Books</h1>
-  <table>
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Body</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>リーダブルコード</td>
-        <td>より良いコードを書くためのシンプルで実践的なテクニック</td>
-        <td>
-          <a class="show_90794" href="/books/90794">show</a>
-        </td>
-        <td>
-          <a class="edit_90794" href="/books/90794/edit">Edit</a>
-        </td>
-        <td>
-          <a data-confirm="Are you sure?" class="destroy_90794" rel="nofollow" data-method="delete" href="/books/90794">Destroy</a>
-        </td>
-       </tr>
+ <% @books.each do |book| %>
+<table>
+ <thead>
+  <tr>
+   <th>Title</th>
+   <th>Body</th>
+   <th colspan="3"></th>
+  </tr>
+ </thead>
+ <tbody>
+  <tr>
+   <td><%= book.title %></td>
+   <td><%= book.body %></td>
+   <td><%= link_to"Show",book_path(book.id) %></td>
+   <td><%= link_to"Edit",edit_book_path(book.id) %></td>
+   <td><%= link_to"Destroy",book_path(book.id),method: :delete,"data-confirm" => "本当に削除しますか？" %></td>
+  </tr>
+ </tbody>
+</table>
+<% end %>
 
-       <tr>
-        <td>トラブル知らずのシステム設計</td>
-        <td>システム設計の要点を図解で説明してくれます</td>
-        <td>
-          <a class="show_90795" href="/books/90795">show</a>
-        </td>
-        <td>
-          <a class="edit_90795" href="/books/90795/edit">Edit</a>
-        </td>
-        <td>
-          <a data-confirm="Are you sure?" class="destroy_90795" rel="nofollow" data-method="delete" href="/books/90795">Destroy</a>
-        </td>
-      </tr>
+<div class="flash-notifications">
+ <% flash.each do |key, value| %>
+ <%= content_tag(:div, value, class: key)
+</div>
+<% end %>
 
-      <tr>
-        <td>たのしいRuby</td>
-        <td>Rubyの入門におすすめ</td>
-        <td>
-          <a class="show_90796" href="/books/90796">show</a>
-        </td>
-        <td>
-          <a class="edit_90796" href="/books/90796/edit">Edit</a>
-        </td>
-        <td>
-          <a data-confirm="Are you sure?" class="destroy_90796" rel="nofollow" data-method="delete" href="/books/90796">Destroy</a>
-        </td>
-      </tr
 
-            <tr>
-        <td>入門Git</td>
-        <td>gitについての基本構造から内部構造まで解説してくれます</td>
-        <td>
-          <a class="show_90797" href="/books/90797">show</a>
-        </td>
-        <td>
-          <a class="edit_90797" href="/books/90797/edit">Edit</a>
-        </td>
-        <td>
-          <a data-confirm="Are you sure?" class="destroy_90797" rel="nofollow" data-method="delete" href="/books/90797">Destroy</a>
-        </td>
-      </tr>
 
-            <tr>
-        <td>アルゴリズム図鑑</td>
-        <td>アルゴリズムについてカラーイラストでしっかり解説してくれます</td>
-        <td>
-          <a class="show_90798" href="/books/90798">show</a>
-        </td>
-        <td>
-          <a class="edit_90798" href="/books/90798/edit">Edit</a>
-        </td>
-        <td>
-          <a data-confirm="Are you sure?" class="destroy_90798" rel="nofollow" data-method="delete" href="/books/90798">Destroy</a>
-        </td>
-      </tr
-
-            <tr>
-        <td>達人プログラマー</td>
-        <td>プログラマ入門者は必読！</td>
-        <td>
-          <a class="show_90799" href="/books/90799">show</a>
-        </td>
-        <td>
-          <a class="edit_90799" href="/books/90799/edit">Edit</a>
-        </td>
-        <td>
-          <a data-confirm="Are you sure?" class="destroy_90799" rel="nofollow" data-method="delete" href="/books/90799">Destroy</a>
-        </td>
-      </tr>
-
-            <tr>
-        <td>データベース実践入門</td>
-        <td>効率的なSQL分を教えてくれます</td>
-        <td>
-          <a class="show_90800" href="/books/90800">show</a>
-        </td>
-        <td>
-          <a class="edit_90800" href="/books/90800/edit">Edit</a>
-        </td>
-        <td>
-          <a data-confirm="Are you sure?" class="destroy_90800" rel="nofollow" data-method="delete" href="/books/90800">Destroy</a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
 
   <h2>New book</h2>
 <%= form_with model:Book.new do |f| %>
@@ -127,5 +49,8 @@
  <%= f.submit'CreateBook' %>
  <% end %>
 </div>
+
  </body>
 </html>
+
+
