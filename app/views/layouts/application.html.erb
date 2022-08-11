@@ -11,7 +11,7 @@
   </head>
 
   <body>
-    <main>
+    
       <div class="text-success">
         <%= flash[:notice] %>
         
@@ -19,7 +19,9 @@
       <div class="text-danger">
         <%= flash[:alret] %>
       </div>
+      
+   
       <%= yield %>
-    </main>
+    
   </body>
 </html>
