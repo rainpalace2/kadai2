@@ -1,12 +1,8 @@
 
-
  <body>
-  
   <p id="notice"></p>
   <h1>Books</h1>
- <% @books.each do |book| %>
-  
- 
+
  <table>
   <thead>
    <tr>
@@ -15,7 +11,7 @@
     <th colspan="3"></th>
    </tr>
   </thead>
-  
+  <% @books.each do |book| %>
  <tbody>
   <tr>
    <td><%= book.title %></td>
@@ -25,9 +21,8 @@
    <td><%= link_to"Destroy",book_path(book.id),method: :delete,"data-confirm" => "本当に削除しますか？" %></td>
   </tr>
   </tbody>
+  <% end %>
  </table>
-
-<% end %>
 
 <% if flash[:notice] %>
 <% end %>
@@ -56,10 +51,10 @@
  <%= f.text_area :body %>
  </div>
 
-<div class="actions">
- <%= f.submit'CreateBook' %>
+
+ <%= f.submit 'Create Book' %>
  <% end %>
-</div>
+
 
  </body>
 </html>
